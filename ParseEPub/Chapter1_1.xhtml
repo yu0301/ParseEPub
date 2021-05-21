@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+  <title>1.1 什么是EPub？</title>
+  <link href="../Styles/Stylesheet.css" type="text/css" rel="stylesheet"/>
+</head>
+
+<body>
+  <h2 id="whats_epub">1.1　什么是EPub？</h2>
+
+  <p style="margin-bottom: 1em;">EPub是由国际数字出版论坛（International Digital Publishing Forum，简称<a href="http://idpf.org/">IDPF</a>）提出的一种自由开放的电子图书标准，特点是文字内容可以根据阅读设备的特性，以最适于阅读的方式显示，最新版本是3.0.1。EPub元数据是XML，内容是XHTML。如果文档构建系统产生的结果用于Web，或者是基于XML，就可用于生成EPub。</p>
+
+  <div class="float-right">
+    <img alt="图1-1　IDPF标志" src="../Images/epub-logo.png"/> 
+
+    <p class="duokan-image-maintitle">图1-1　IDPF标志</p>
+  </div>
+
+  <p>国际数字出版论坛是一个电子书产业的国际性商业与标准组织，原为开放式电子书论坛（Open eBook Forum，简称OeBF）。为促进电子书市场开放，并适合于阅读系统（Reading System）之间的信息交换，制定OeBPS（Open eBook Publication Structure）标准，后演变成EPub（Electronic Publication，电子出版）标准，作为电子书内容描述的标准规范。目前，EPub在欧美已被广泛使用，日本各图书出版商和电子公司已经达成共识，将EPub 3作为电子书出版格式。</p>
+
+  <h3 id="create_epub">1.1.1　创建过程</h3>
+
+  <p>快速了解EPub的方法是分解其制作的过程：</p>
+
+  <p>1.制作EPub的第一步是创建您的内容文档，可以是XHTML文件、SVG图像或两者的混合。如果您之前就创建了网页，再制作EPub会比较简单。如果没有，有许多网页编辑程序可以创建XHTML文件。甚至也有一些程序可以完成整个EPub的创建。但是请注意，内容文档通常会引用许多其他类型的资源，如CSS样式表、图像、多媒体、脚本文件等，用于补充或渲染网页，所有这些文件需要一起捆绑到完成的压缩文件中。</p>
+
+  <p>2.制作完您的内容文档后，下一步是创建包文件（OPF），这是阅读系统用于读取有关出版物信息的特殊文档，直观的作用是在书架中显示封面、标题、作者等。创建此文件的第一步是在包文件中列出内容文档中使用的所有资源清单（大部分资源将储存EPub文件中，但有些如音频和视频，可以在线调用）。阅读系统需要此列表来确定是否完整，并检索发现远程调用的文件。您的所有出版物元数据（标题、作者等）也在此文件中，将其合并到一个单一的元素中，以便在阅读系统中轻松提取和使用。您还必须在脊柱部分中调整默认阅读顺序——内容文件的顺序列表，从第一个到最后一个依次排序。最后，包文件确定哪些资源代表导航文件（目录）。</p>
+
+  <p>3.最后一步是将您的内容文档、相关资源和包文档压缩成一个为<span class="code">*.epub</span>扩展名的文件。这个过程并不像标准的压缩一样简单：必须首先添加一个特殊的mimetype文件，以表示zip文件为一个EPub，而不是别的东西，一个必须在名为META-INF目录中的<span class="code">container.xml</span>的文件，用于告诉阅读系统在哪里找到您的包文件。</p>
+
+  <div class="duokan-image-single">
+    <img alt="图1-2　EPub的3种制作模式" src="../Images/work-epub.png"/> 
+
+    <p class="duokan-image-maintitle">图1-2　EPub的3种制作模式</p>
+  </div>
+
+  <p>阅读系统的工作原理：检查您的zip文件，确定它是一个EPub，找到包文件，并从那里找到如何将资源呈现给读者的方式。</p>
+
+  <h3 id="epub_technology">1.1.2　使用技术</h3>
+
+  <p>EPub中使用的一些技术是由国际数字出版论坛专门开发的，该组织是维护EPub规范的组织，其成员包括各种出版发行商和阅读系统的开发人员。但是，大多数被采用的标准都得到国际认可，至少是大多数读者熟悉的。您将在EPub 3出版物中找到的关键技术包括：</p>
+
+  <p><a href="https://zh.wikipedia.org/wiki/HTML5">HTML5</a>：用于表示文本和多媒体内容，现在包括对<a href="https://zh.wikipedia.org/wiki/MathML">MathML</a>方程式的本地支持，<a href="https://zh.wikipedia.org/wiki/%E6%97%81%E8%A8%BB%E6%A8%99%E8%A8%98">ruby</a>发音标记和嵌入式SVG图像。</p>
+
+  <p><a href="https://zh.wikipedia.org/wiki/%E5%8F%AF%E7%B8%AE%E6%94%BE%E5%90%91%E9%87%8F%E5%9C%96%E5%BD%A2">SVG</a>1.1：表示图形作品（例如漫画和漫画）。</p>
+
+  <p><a href="https://zh.wikipedia.org/wiki/%E5%B1%82%E5%8F%A0%E6%A0%B7%E5%BC%8F%E8%A1%A8">CSS</a>2.1和CSS 3：方便显示和呈现视觉内容。</p>
+
+  <p><a href="https://zh.wikipedia.org/wiki/JavaScript">JavaScript</a>：用于交互和自动化。</p>
+
+  <p><a href="https://zh.wikipedia.org/wiki/TrueType">TrueType</a>和<a href="https://zh.wikipedia.org/wiki/Web%E9%96%8B%E6%94%BE%E5%AD%97%E5%9E%8B%E6%A0%BC%E5%BC%8F">WOFF</a>：提供超出阅读系统的字体支持。</p>
+
+  <p><a href="https://zh.wikipedia.org/wiki/SSML">SSML</a>/PLS/CSS 3 Speech：文本到语音的呈现。</p>
+
+  <p><a href="https://zh.wikipedia.org/wiki/%E5%90%8C%E6%AD%A5%E5%A4%9A%E5%AA%92%E4%BD%93%E9%9B%86%E6%88%90%E8%AF%AD%E8%A8%80">SMIL</a>3：用于音频播放时同步文本。</p>
+
+  <p><a href="https://zh.wikipedia.org/wiki/%E8%B3%87%E6%BA%90%E6%8F%8F%E8%BF%B0%E6%A1%86%E6%9E%B6">RDF</a>vocabularies：用于嵌入关于出版物和内容的语义信息。</p>
+
+  <p><a href="https://zh.wikipedia.org/wiki/XML">XML</a>：一个专门的语法，方便编辑处理EPub。</p>
+
+  <p><a href="https://zh.wikipedia.org/wiki/ZIP%E6%A0%BC%E5%BC%8F">ZIP</a>：将所有资源整合到单个文件中。</p>
+
+  <p>在制作EPub中，我们使用的最多的是XHTML和CSS，这两个是重点需要学习的。其他如JS、字体、SVG、XML等只需要明白会用即可。</p>
+
+  <h3 id="epub_Standard">1.1.3　规范文档</h3>
+
+  <p><a href="http://www.idpf.org/epub/301/spec/epub-publications.html">EPub 3.0.1 出版物</a>，为EPub出版物而定义发行级别的语义和总体合规要求；用于定义内容的版面。</p>
+
+  <p><a href="http://www.idpf.org/epub/301/spec/epub-contentdocs.html">EPub 3.0.1 内容文档</a>，为了将XHTML、SVG和CSS等用在EPub出版物的上下文而定义规则；用于描述电子书中各单元内容间的关联性。</p>
+
+  <p><a href="http://www.idpf.org/epub/301/spec/epub-ocf.html">EPub 3.0.1 开放容器格式</a>，为将一组相关资源封装进单一资源文件（zip，<a href="http://www.idpf.org/epub/30/spec/epub30-overview.html#gloss-container">EPub容器</a>）而定义文件格式和处理模型；用于描述如何将电子书内容压缩成单一的电子档，以便于电子书的传播、发送和档案管理。</p>
+
+  <p><a href="http://www.idpf.org/epub/301/spec/epub-mediaoverlays.html">EPub 3.0.1 媒体叠加</a>，为将文本和音频进行同步而定义格式和处理模型。</p>
+
+  <p>这四种文档对电子书制作者来说很重要，但是掺了比较多对制作无用的东西。所以在这里就不再细说，后文会着重介绍对制作有用的知识。</p>
+
+  <p>中文版见<a href="http://epub.anfengde.com/epub-3-0-standard-chinese-version/">EPub 3.0 Standard Chinese Version</a>网站，资料由<a href="http://epub.anfengde.com/">AnFengDe</a>网站提供，感谢。</p>
+</body>
+</html>
